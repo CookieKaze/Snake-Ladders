@@ -7,9 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Player.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
+        Player * player = [Player new];
         while (true) {
             NSLog(@"Welcome to Snakes & Ladders!");
             NSLog(@"What would you like to do?");
@@ -21,7 +23,7 @@ int main(int argc, const char * argv[]) {
             input = [input lowercaseString];
             
             if ([input isEqualToString:@"roll"] || [input isEqualToString:@"r"]) {
-                NSLog(@"YOU ROLLED");
+                [player roll];
             }
         }
     }
