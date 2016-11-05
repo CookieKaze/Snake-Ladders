@@ -14,6 +14,7 @@
 {
     self = [super init];
     if (self) {
+        _gameOver = NO;
         _currentSquare = 0;
         _gameLogic = @{@4:@14,
                        @7:@17,
@@ -38,9 +39,28 @@
 
 -(void) roll{
     int rollValue = arc4random_uniform(6)+1;
+    NSLog(@"You rolled a %d",rollValue);
     self.currentSquare += rollValue;
-    NSLog(@"Roll: %d",rollValue);
-    NSLog(@"Current Square: %ld",self.currentSquare);
+    NSNumber * currentNumber = [NSNumber numberWithInteger:self.currentSquare];
+    
+    if ([self.gameLogic objectForKey:currentNumber] != nil){
+        NSNumber * newSquare =[self.gameLogic objectForKey:currentNumber];
+        self.currentSquare = [newSquare integerValue];
+        if (currentNumber < [self.gameLogic objectForKey:currentNumber]) {
+            NSLog (@"Ladder! You climbed to square %ld", self.currentSquare);
+        }else{
+            NSLog (@"Snake! You slid back down to square %ld", self.currentSquare);
+        }
+    }else{
+        NSLog(@"You landed on: %ld",self.currentSquare);
+    }
+    
+    if (self.currentSquare >= 100) {
+        self.gameOver = YES;
+        NSLog(@"Game Over!");
+    }
+    
+    
 }
 
 @end

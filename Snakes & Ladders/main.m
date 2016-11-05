@@ -12,10 +12,9 @@
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         Player * player = [Player new];
-        while (true) {
-            NSLog(@"Welcome to Snakes & Ladders!");
-            NSLog(@"What would you like to do?");
-            NSLog(@"Options: Roll (R)");
+        NSLog(@"Welcome to Snakes & Ladders!");
+        NSLog(@"Options: Roll (R)");
+        while (player.gameOver == NO) {
             char str [255];
             fgets(str, 255, stdin);
             NSString * input = [NSString stringWithCString:str encoding:NSUTF8StringEncoding];
