@@ -7,11 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
-
+@class Player;
 @interface PlayerManager : NSObject
 
 @property (nonatomic) NSMutableArray * players; 
+@property (nonatomic) NSInteger currentIndex;
+@property (nonatomic) NSDictionary * gameLogic;
+@property (nonatomic) BOOL gameOver;
 
--(void) createPlayers: (int) numPlayers;
-
+-(void) createPlayers;
+-(Player *) getCurrentPlayer;
+-(void) startGame;
+-(void) roll;
 @end
