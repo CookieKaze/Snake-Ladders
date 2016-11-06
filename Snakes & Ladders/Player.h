@@ -10,10 +10,13 @@
 
 @interface Player : NSObject
 
+@property (nonatomic, weak) NSString * playerName;
 @property (nonatomic) NSInteger currentSquare;
 @property (nonatomic) NSDictionary * gameLogic;
 @property (nonatomic) NSString * output; 
 @property (nonatomic) BOOL gameOver;
+
+@property (nonatomic) NSString * name;
 
 -(void) roll;
 
